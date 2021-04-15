@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Board {
+public class Board implements Cloneable {
 
     int[][] board;
     boolean visited = false;
@@ -56,8 +56,9 @@ public class Board {
         return board;
     }
 
+    //clone the board
     @Override
-    protected Board clone() throws CloneNotSupportedException {
+    public Board clone() {
         if (board == null) {
             return null;
         }

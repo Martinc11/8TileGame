@@ -26,7 +26,7 @@ public class BreadthFirstSearch {
         }
 
 
-        return false;
+        return true;
     }
 
 
