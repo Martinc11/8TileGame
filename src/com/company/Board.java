@@ -85,6 +85,7 @@ public class Board implements Cloneable {
 
 
 
+    //clone the board
     @Override
     public Board clone() {
         if (board == null) {
