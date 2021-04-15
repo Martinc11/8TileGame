@@ -55,4 +55,17 @@ public class Board {
     public int[][] getBoard() {
         return board;
     }
+
+    @Override
+    protected Board clone() throws CloneNotSupportedException {
+        if (board == null) {
+            return null;
+        }
+
+        int[][] result = new int[board.length][];
+        for (int i = 0; i < board.length; i++) {
+            result[i] = Arrays.copyOf(board[i], board[i].length);
+        }
+        return new Board(result);
+    }
 }
