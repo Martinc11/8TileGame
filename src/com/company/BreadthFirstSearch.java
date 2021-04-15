@@ -36,15 +36,17 @@ public class BreadthFirstSearch {
         return null;
     }
 
+    //Method to find the blank tile (0) on the current board
     private int[] findBlankTile(Board currentBoard) {
-        int[] indexes = new int[2];
+        int[] indexes = new int[2]; //the index where the blank tile is
 
-        for (int i = 0; i < currentBoard.getBoardSize(); i++) {
-            for (int j = 0; j < currentBoard.board[i].length; j++) {
-                if (currentBoard.getIndex(i, j) == 0) {
+        //iterate through the board to find the blank tile
+        for (int i = 0; i < currentBoard.getBoard().length; i++) {
+            for (int j = 0; j < currentBoard.getBoard()[i].length; j++) {
+                if (currentBoard.getBoard()[i][j] == 0) { //if blank tile is found
                     indexes[0] = i;
                     indexes[1] = j;
-                    return indexes;
+                    return indexes; //return the indexes where the blank tile is
                 }
             }
         }
