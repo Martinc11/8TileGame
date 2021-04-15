@@ -29,11 +29,18 @@ public class Main {
 
         Board board3 = new Board(testState);
 
-        System.out.println(board.toString());
+        /*System.out.println(board.toString());
         System.out.println(board.equals(board2));
         System.out.println(board.equals(board3));
         System.out.println(board.hashCode());
         System.out.println(board3.hashCode());
+        System.out.println(board2.hashCode());*/
+
+        Board clonedBoard = board.clone();
+        System.out.println(board.hashCode());
+        System.out.println(clonedBoard.hashCode());
+        System.out.println(board.equals(clonedBoard));
+
 
     }
 
