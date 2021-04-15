@@ -1,10 +1,12 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Board {
 
-    int[][] board = null;
+    int[][] board;
     boolean visited = false;
 
     public Board(int[][] tiles){
@@ -22,8 +24,10 @@ public class Board {
 
     @Override
     public String toString() {
-        return "Board{" +
-                "board=" + Arrays.toString(board) +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        for(int[] s1 : board) {
+            sb.append(Arrays.toString(s1)).append('\n');
+        }
+        return sb.toString();
     }
 }
