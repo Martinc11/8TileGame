@@ -24,8 +24,16 @@ public class BreadthFirstSearch {
         closed.add(startState);
         boolean foundGoal = false;
 
-        while (foundGoal && !queue.isEmpty()) {
-            Board currentBoard = queue.remove(); // get the first state from the queue
+        while (!foundGoal && !queue.isEmpty()) {
+
+            Board currentBoard = queue.remove();
+            open.remove(currentBoard);
+
+            if(currentBoard.getDepth() % 5 == 0){  // Just so we know the program is doing something.
+                System.out.printf("%s    %s%d", currentBoard.toString(), "Current Depth: ", currentBoard.getDepth());
+            }
+
+            // get the first state from the queue
             if (!currentBoard.equals(goalBoard)){
                 generateChildBfs(currentBoard);  // generate child.
                 closed.add(currentBoard);
@@ -50,10 +58,11 @@ public class BreadthFirstSearch {
             Board newBoard = currentBoard.clone();
             int[][] tileArray =  newBoard.getBoard();
             tileArray[x][y] = tileArray[x-1][y];
-            tileArray[x+1][y] = 0;
+            tileArray[x-1][y] = 0;
             if(hasNotBeenVisited(newBoard)){
                 newBoard.setDepth(currentBoard.getDepth() + 1);
                 open.add(newBoard);
+                queue.add(newBoard);
             }
         }
 
@@ -66,6 +75,7 @@ public class BreadthFirstSearch {
             if(hasNotBeenVisited(newBoard)){
                 newBoard.setDepth(currentBoard.getDepth() + 1);
                 open.add(newBoard);
+                queue.add(newBoard);
             }
         }
         
@@ -79,6 +89,7 @@ public class BreadthFirstSearch {
             if(hasNotBeenVisited(newBoard)){
                 newBoard.setDepth(currentBoard.getDepth() + 1);
                 open.add(newBoard);
+                queue.add(newBoard);
             }
         }
 
@@ -91,6 +102,7 @@ public class BreadthFirstSearch {
             if(hasNotBeenVisited(newBoard)){
                 newBoard.setDepth(currentBoard.getDepth() + 1);
                 open.add(newBoard);
+                queue.add(newBoard);
             }
         }
     }
