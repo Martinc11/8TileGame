@@ -8,30 +8,57 @@ import java.util.Objects;
 public class Board implements Cloneable {
 
     int[][] board;
-    boolean visited = false;
+
+    int depth = 0;
 
     public Board(int[][] tiles){
         this.board = tiles;
     }
 
-
-    public void setVisited(boolean visited) {
-        this.visited = visited;
+    public Board(int[][] tiles, int depth) {
+        this.depth = depth;
+        this.board = tiles;
     }
 
-    public boolean isVisited() {
-        return visited;
-    }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for(int[] s1 : board) {
-            sb.append(Arrays.toString(s1)).append('\n');
+    //Method to find the blank tile (0) on the current board
+    public int[] findBlankTile() {
+        int[] indexes = new int[2]; //the index where the blank tile is
+
+        //iterate through the board to find the blank tile
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] == 0) { //if blank tile is found
+                    indexes[0] = i;
+                    indexes[1] = j;
+                    return indexes; //return the indexes where the blank tile is
+                }
+            }
         }
-        return sb.toString();
+        return null;
     }
 
+
+
+    public void setBoard(int[][] board) {
+        this.board = board;
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    /**
+     * Override equals so its comparing sub arrays too.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,14 +74,16 @@ public class Board implements Cloneable {
         return true;
     }
 
+    /**
+     * Override hashCode to use Hashset in BFS class
+     * @return
+     */
     @Override
     public int hashCode() {
-        return Arrays.hashCode(board);
+        return Arrays.deepHashCode(board);
     }
 
-    public int[][] getBoard() {
-        return board;
-    }
+
 
     //clone the board
     @Override
@@ -67,6 +96,16 @@ public class Board implements Cloneable {
         for (int i = 0; i < board.length; i++) {
             result[i] = Arrays.copyOf(board[i], board[i].length);
         }
-        return new Board(result);
+        return new Board(result, depth);
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(int[] s1 : board) {
+            sb.append(Arrays.toString(s1)).append('\n');
+        }
+        return sb.toString();
     }
 }
