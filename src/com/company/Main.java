@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Main {
@@ -25,8 +26,17 @@ public class Main {
 
 
     private boolean breadthFirstSearch(Board startState){
-        ArrayList<Board> queue = new ArrayList<>();
+        Queue<Board> queue = new LinkedList<>();
+        ArrayList<Board> closed = new ArrayList<>();
         startState.setVisited(true);
+        System.out.println(startState.toString());
+        queue.add(startState);
+        closed.add(startState);
+
+        while(!queue.isEmpty()){
+
+        }
+
 
 
 
