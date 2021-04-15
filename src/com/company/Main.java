@@ -34,6 +34,8 @@ public class Main {
         closed.add(startState);
 
         while(!queue.isEmpty()){
+            Board currentBoard = queue.remove();
+
 
         }
 
@@ -45,7 +47,13 @@ public class Main {
     }
 
 
-    private int[][] generateChild(){
+    private Board generateChildBfs(){
+
+
+        return null;
+    }
+
+    private int[] findBlankTile(){
         return null;
     }
 }
