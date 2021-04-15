@@ -30,4 +30,17 @@ public class Board {
         }
         return sb.toString();
     }
+
+    public int getBoardSize() {
+        return board.length;
+    }
+
+    public int getIndex(int i, int j) {
+        int index = board[i][j];
+        return index;
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
 }

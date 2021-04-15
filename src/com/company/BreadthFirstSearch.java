@@ -33,7 +33,18 @@ public class BreadthFirstSearch {
         return null;
     }
 
-    private int[] findBlankTile() {
+    private int[] findBlankTile(Board currentBoard) {
+        int[] indexes = new int[2];
+
+        for (int i = 0; i < currentBoard.getBoardSize(); i++) {
+            for (int j = 0; j < currentBoard.board[i].length; j++) {
+                if (currentBoard.getIndex(i, j) == 0) {
+                    indexes[0] = i;
+                    indexes[1] = j;
+                    return indexes;
+                }
+            }
+        }
         return null;
     }
 }
