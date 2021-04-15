@@ -24,36 +24,4 @@ public class Main {
 
     }
 
-
-    private boolean breadthFirstSearch(Board startState){
-        Queue<Board> queue = new LinkedList<>();
-        ArrayList<Board> closed = new ArrayList<>();
-        startState.setVisited(true);
-        System.out.println(startState.toString());
-        queue.add(startState);
-        closed.add(startState);
-
-        while(!queue.isEmpty()){
-            Board currentBoard = queue.remove();
-
-
-        }
-
-
-
-
-
-        return false;
-    }
-
-
-    private Board generateChildBfs(){
-
-
-        return null;
-    }
-
-    private int[] findBlankTile(){
-        return null;
-    }
 }
