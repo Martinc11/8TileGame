@@ -26,9 +26,12 @@ public class Main {
                 {2, 3, 6},
                 {1, 4, 8},
                 {7, 5, 0}};
-
+        int[][] veryEasy =  {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 0, 8}};
         Board board3 = new Board(testState);
-
+        Board board1 = new Board(veryEasy);
         /*System.out.println(board.toString());
         System.out.println(board.equals(board2));
         System.out.println(board.equals(board3));
@@ -40,8 +43,11 @@ public class Main {
         System.out.println(board.hashCode());
         System.out.println(clonedBoard.hashCode());
         System.out.println(board.equals(clonedBoard));
-
-
+        DepthFirstSearch dfs = new DepthFirstSearch();
+        dfs.depthFirstSearch(board1);
+        if (dfs.depthFirstSearch(board1)) {
+            System.out.println("Depth First Search was Successful!");
+        }
     }
 
 }

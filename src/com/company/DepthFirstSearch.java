@@ -9,6 +9,8 @@ public class DepthFirstSearch {
             {4, 5, 6},
             {7, 8, 0}};
     Board goalBoard = new Board(goalState);
+    boolean goalBoardFound = false;
+
     public boolean depthFirstSearch(Board state) {
         if (state.equals(goalBoard)) {
             return true;
@@ -18,8 +20,11 @@ public class DepthFirstSearch {
         for (int i = 0; i < children.size(); i++) {
             depthFirstSearch(children.get(i));
         }
+        if(goalBoard.equals(state)) {
+            goalBoardFound = true;
+        }
 
-        return true;
+        return goalBoardFound;
     }
 
     private ArrayList<Board> generateChildrenDfs(Board currentBoard) {
@@ -29,12 +34,12 @@ public class DepthFirstSearch {
         int col = indexes[1];
 
         //Slide the blank tile (0) up if possible
-        if ( row - 1 >= 0 ){
+        if ( row - 1 >= 0 ) {
             Board clonedBoard = currentBoard.clone();
             int[][] tileArray = clonedBoard.getBoard();
             tileArray[row][col] = tileArray[row - 1][col];
             tileArray[row + 1][col] = 0;
-            if(!closed.contains(clonedBoard)){
+            if(!closed.contains(clonedBoard)) {
                 clonedBoard.setDepth(currentBoard.getDepth() + 1);
                 children.add(clonedBoard);
             }
@@ -77,9 +82,6 @@ public class DepthFirstSearch {
 
         return children;
     }
-
-
-
 
 
 }
