@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 enum States {
     EASY, MEDIUM, HARD, HARDER, HARDEST
@@ -48,8 +49,10 @@ public class EightTileSolver {
         startingStates.add(new Board(hardest));
     }
 
+    /**
+     * Main game loop. Prompts the user to chose a starting state and an algorithm and then displays the result of the run.
+     */
     public void play(View view) throws Exception {
-
 
         while (true) {
             printBoardOptions();
@@ -76,7 +79,8 @@ public class EightTileSolver {
     }
 
     public void printBoardOptions(){
-        view.output("Welcome to Eight Tile Puzzle Solver! Select one of the following puzzle configurations to run by entering the integer in the brackets after the name: \n You can enter 'quit' at anytime to exit \n\n");
+        view.output("Welcome to Eight Tile Puzzle Solver! Select one of the following puzzle configurations to run by entering the integer in the brackets after the name. Also, by entering 5," +
+                "you can create your own board configuration.  \n You can enter 'quit' at anytime to exit \n\n");
         int i = 0;
         for (States state : States.values()) {
             view.output(state.name() + " [" + i + "]");
@@ -89,6 +93,8 @@ public class EightTileSolver {
             int input = view.intInput();
             if (input >= 0 && input <= 4) {
                 return startingStates.get(input);
+            } else if (input == 5) {
+                return getUserBoard();
             } else {
                 view.output("Enter an integer between 0 and 4! \n");
             }
@@ -105,5 +111,50 @@ public class EightTileSolver {
                 view.output("Enter either 1 or 2! \n");
             }
         }
+    }
+    public Board getUserBoard() throws Exception {
+        while(true){
+            int[] userArray = getIntArray();
+
+        }
+
+
+        return null;
+    }
+
+
+    private int[] getIntArray() throws Exception {
+        view.output("Enter your board configuration in row major order as one long integer. e.g. enter 123456780 for the board configuration: \n[1,2,3]\n[4,5,6]\n[7,8,0] ");
+        while (true){
+            int userInt = view.intInput();
+            if(String.valueOf(userInt).length() != 9){
+                view.output("The integer need to be 9 digits, include one zero (0), and have no repeating digits!");
+            } else {
+                int[] userArray = new int[9];
+                for(int i = 8; i >= 0; i--){
+                    int digit = userInt % 10;
+                    userArray[i] = digit;
+                    userInt = userInt / 10;
+                }
+                if(checkForUniqueValues(userArray)){
+                    return userArray;
+                }
+            }
+        }
+    }
+
+    private boolean checkForUniqueValues(int[] userArray){
+        TreeSet<Integer> lazyWay = new TreeSet<>();
+        boolean hasZero = false;
+        for(int i = 0; i < 9; i++){
+            if (userArray[i] == 0){
+                hasZero = true;
+            }
+            lazyWay.add(new Integer(userArray[i]));
+        }
+        if (lazyWay.size() == 9 && hasZero){
+            return true;
+        }
+        return false;
     }
 }
