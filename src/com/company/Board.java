@@ -1,17 +1,18 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
+
+/**
+ * Class representing the board for the game. The board is just a 2D array. Overrode equals and hashcode to allow for the use of hashsets for open and closed lists.
+ */
 public class Board implements Cloneable {
 
     int[][] board;
 
     int depth = 0;
 
-    public Board(int[][] tiles){
+    public Board(int[][] tiles) {
         this.board = tiles;
     }
 
@@ -39,7 +40,6 @@ public class Board implements Cloneable {
     }
 
 
-
     public void setBoard(int[][] board) {
         this.board = board;
     }
@@ -64,25 +64,18 @@ public class Board implements Cloneable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Board board1 = (Board) o;
-        for(int i = 0; i < 3; i++){
-            int[] subArray1 = this.board[i];
-            int[] subArray2 = board1.board[i];
-            if(!Arrays.deepEquals(board, board1.board)){
-                return false;
-            }
-        }
-        return true;
+        return Arrays.deepEquals(board, board1.board);
     }
 
     /**
      * Override hashCode to use Hashset in BFS class
+     *
      * @return
      */
     @Override
     public int hashCode() {
         return Arrays.deepHashCode(board);
     }
-
 
 
     //clone the board
@@ -103,9 +96,11 @@ public class Board implements Cloneable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(int[] s1 : board) {
+        sb.append("\n");
+        for (int[] s1 : board) {
             sb.append(Arrays.toString(s1)).append('\n');
         }
+
         return sb.toString();
     }
 }
