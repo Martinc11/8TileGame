@@ -83,7 +83,7 @@ public class EightTileSolver {
      */
 
     public void printBoardOptions(){
-        view.output("Welcome to Eight Tile Puzzle Solver! Select one of the following puzzle configurations to run by entering the integer in the brackets after the name. Also, by entering 5," +
+        view.output("Welcome to Eight Tile Puzzle Solver! Select one of the following puzzle configurations to run by entering the integer in the brackets after the name. Also, by entering 5, " +
                 "you can create your own board configuration.  \n You can enter 'quit' at anytime to exit \n\n");
         int i = 0;
         for (States state : States.values()) {
@@ -126,7 +126,7 @@ public class EightTileSolver {
     /**
      * If the user enters a valid array, i.e. 9 digits with no duplicate values and 1 zero, then check whether the board is solvable or not.
      * Solvability is based on the number of inversions in the board. For example, if 8 comes before 5 in the array, that's 1 inversion. There needs to be an
-     * even number of inversions in a solvable board.
+     * even number for the board to be solvable.
      * @return
      * @throws Exception
      */
