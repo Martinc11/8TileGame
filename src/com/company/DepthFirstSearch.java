@@ -10,7 +10,7 @@ import java.util.Stack;
  */
 
 public class DepthFirstSearch implements Algorithm {
-    HashSet<Board> closed = new HashSet<>();
+    HashSet<Board> closed = new HashSet<>(); //HashSet closed is for states of boards that have been used and can't be used again
     int[][] goalState = {
             {1, 2, 3},
             {4, 5, 6},

@@ -21,8 +21,9 @@ public class Board implements Cloneable {
         this.board = tiles;
     }
 
-
-    //Method to find the blank tile (0) on the current board
+    /**
+     * Finds where the blank tile (0) is on the current board.
+     */
     public int[] findBlankTile() {
         int[] indexes = new int[2]; //the index where the blank tile is
 
@@ -30,8 +31,8 @@ public class Board implements Cloneable {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] == 0) { //if blank tile is found
-                    indexes[0] = i;
-                    indexes[1] = j;
+                    indexes[0] = i; //board row
+                    indexes[1] = j; //board column
                     return indexes; //return the indexes where the blank tile is
                 }
             }

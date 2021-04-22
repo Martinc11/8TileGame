@@ -3,8 +3,8 @@ package com.company;
 import java.util.Scanner;
 
 /**
- * Handles getting input from the user and displaying a message on the console. Input for this program should be either and integer or "quit".
- * If "quit" is entered, and exception is propagated back to main() which exits the execution.
+ * Handles getting input from the user and displaying a message on the console. Input for this program should be either an integer or "quit".
+ * If "quit" is entered, an exception is propagated back to main() which exits the execution.
  */
 
 public class View {
