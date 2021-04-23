@@ -12,6 +12,7 @@ public class Board implements Cloneable {
 
     int depth = 0;
 
+
     public Board(int[][] tiles) {
         this.board = tiles;
     }

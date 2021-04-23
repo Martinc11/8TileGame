@@ -17,6 +17,7 @@ public class DepthFirstSearch implements Algorithm {
             {7, 8, 0}};
     Board goalBoard = new Board(goalState);
     Stack<Board> stack = new Stack<>();
+    private int numberOfBoards = 0;
 
 
     public boolean run(Board state) {
@@ -27,7 +28,7 @@ public class DepthFirstSearch implements Algorithm {
         while (!foundGoal && !stack.isEmpty()) {
 
             Board currentBoard = stack.pop();
-            System.out.printf("%s    %s%d\n", currentBoard.toString(), "Current Depth: ", currentBoard.getDepth());
+            System.out.printf("%s    %s%d%s%d\n", currentBoard.toString(), "Current Depth: ", currentBoard.getDepth(), ", Board number: ", numberOfBoards++);
             closed.add(currentBoard);
             if (!currentBoard.equals(goalBoard)) {
                 generateChildrenDfs(currentBoard); // the generated children get added to the stack, and then on the next iteration one of the children is evaluated, putting that child's children on the stack and so on.

@@ -176,7 +176,7 @@ public class EightTileSolver {
                     return userArray;
                 }
                 else {
-                    System.out.println("The integer needs to no repeating digits and contains the digits 1, 2, 3, 4, 5, 6, 7, 8, 0.");
+                    System.out.println("The integer needs to have no repeating digits and contains the digits 1, 2, 3, 4, 5, 6, 7, 8, 0.");
                 }
             }
         }
@@ -189,7 +189,6 @@ public class EightTileSolver {
      */
     private boolean checkForUniqueValues(int[] userArray) {
         TreeSet<Integer> lazyWay = new TreeSet<>();
-        //boolean hasZero = false;
         for(int i = 0; i < 9; i++) {
             if (userArray[i] == 9) {
                 return false;
@@ -199,16 +198,6 @@ public class EightTileSolver {
         if (lazyWay.size() == 9) {
             return true;
         }
-        /*
-        for(int i = 0; i < 9; i++) {
-            if (userArray[i] == 0) {
-                hasZero = true;
-            }
-            lazyWay.add(new Integer(userArray[i]));
-        }
-        if (lazyWay.size() == 9 && hasZero) {
-            return true;
-        }*/
         return false;
     }
 }

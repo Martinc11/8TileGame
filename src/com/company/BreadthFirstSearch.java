@@ -13,6 +13,7 @@ public class BreadthFirstSearch implements Algorithm {
     Queue<Board> queue = new LinkedList<>();
     HashSet<Board> closed = new HashSet<>();
     HashSet<Board> open = new HashSet<>();
+    private int numberOfBoards = 0;
 
 
     int[][] goalSequence = {
@@ -37,7 +38,7 @@ public class BreadthFirstSearch implements Algorithm {
             open.remove(currentBoard);
 
             // Just so we know the program is doing something.
-            System.out.printf("%s    %s%d\n", currentBoard.toString(), "Current Depth: ", currentBoard.getDepth());
+            System.out.printf("%s    %s%d %s%d\n", currentBoard.toString(), "Current Depth: ", currentBoard.getDepth(), "Board number: ", numberOfBoards++);
 
 
             // get the first state from the queue if the current board isn't the goal
