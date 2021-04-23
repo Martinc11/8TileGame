@@ -111,7 +111,7 @@ public class EightTileSolver {
      * After the user has chosen their board configurations or created their board configuration, they can either enter a 1 to perform
      * Breadth First Search or enter a 2 to perform a Depth First Search on the board configuration.
      */
-    public int assignAlgorithm() throws Exception {
+    public int assignAlgorithm() throws IllegalArgumentException {
         while(true){
             int input = view.intInput();
             if (input == 1 || input == 2) {
@@ -159,7 +159,7 @@ public class EightTileSolver {
      * if the user chooses to create their own board configuration, they will be asked to enter an 9 digit integer that contains the digits contains the digits 1, 2, 3, 4, 5, 6, 7, 8, 0..
      * Checks that the integer entered is a valid integer that can be used for a board configuration by checking that the integer has 9 digits, has one zero, and has no repeating digits.
      */
-    private int[] getIntArray() throws Exception {
+    private int[] getIntArray() throws IllegalArgumentException {
         view.output("Enter your board configuration in row major order as one long integer. e.g. enter 123456780 for the board configuration: \n[1,2,3]\n[4,5,6]\n[7,8,0] ");
         while (true) {
             int userInt = view.intInput();

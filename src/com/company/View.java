@@ -13,7 +13,7 @@ public class View {
         System.out.print(message);
     }
 
-    public Integer intInput () throws Exception {
+    public Integer intInput () throws IllegalArgumentException {
 
         Scanner input = new Scanner(System.in);
         String userInput = input.next();
@@ -22,7 +22,7 @@ public class View {
         while (!isInt) {
             try {
                 if (userInput.toLowerCase().equals("quit") ) {
-                    throw new Exception();
+                    throw new IllegalArgumentException();
                 }
                 Integer.parseInt(userInput);
                 isInt = true;
